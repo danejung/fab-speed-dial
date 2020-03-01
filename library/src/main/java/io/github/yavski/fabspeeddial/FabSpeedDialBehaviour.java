@@ -19,13 +19,16 @@ package io.github.yavski.fabspeeddial;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorCompat;
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -49,7 +52,7 @@ import java.util.List;
  * <p>
  * <p>
  * A slightly modified version of the original
- * {@link android.support.design.widget.FloatingActionButton.Behavior}.
+ * {@link FloatingActionButton.Behavior}.
  * <p>
  * Created by yavorivanov on 03/01/2016.
  */
