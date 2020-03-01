@@ -16,7 +16,6 @@
 
 package io.github.yavski.fabspeeddial;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -172,7 +171,7 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
 
         newNavigationMenu();
 
-        @SuppressLint("RestrictedApi") int menuItemCount = navigationMenu.size();
+        int menuItemCount = navigationMenu.size();
         fabMenuItemMap = new HashMap<>(menuItemCount);
         cardViewMenuItemMap = new HashMap<>(menuItemCount);
     }
@@ -333,7 +332,6 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
             openMenu();
     }
 
-    @SuppressLint("RestrictedApi")
     private void newNavigationMenu() {
         navigationMenu = new NavigationMenu(getContext());
         new SupportMenuInflater(getContext()).inflate(menuId, navigationMenu);
@@ -448,7 +446,6 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
         fab.hide();
     }
 
-    @SuppressLint("RestrictedApi")
     private void addMenuItems() {
         ViewCompat.setAlpha(menuItemsLayout, 1f);
         for (int i = 0; i < navigationMenu.size(); i++) {
