@@ -130,6 +130,7 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
     private boolean useTouchGuard;
 
     private boolean isAnimating;
+    private OnClickListener noMenuClickListener;
 
     // Variable to hold whether the menu was open or not on config change
     private boolean shouldOpenMenu;
@@ -275,18 +276,8 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
             fab.setBackgroundTintList(fabBackgroundTint);
         }
 
-        fab.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isAnimating) return;
-
-                if (isMenuOpen()) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-            }
-        });
+        fab.setOnClickListener(noMenuClickListener != null
+                ? noMenuClickListener : fabMenuClickListener);
 
         // Needed in order to intercept key events
         setFocusableInTouchMode(true);
@@ -627,6 +618,31 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
 
         return super.dispatchKeyEventPreIme(event);
     }
+
+    public void setNoMenuClickListener(OnClickListener noMenuClickListener) {
+        this.noMenuClickListener = noMenuClickListener;
+        if (noMenuClickListener != null) {
+            fab.setOnClickListener(noMenuClickListener);
+            if (isMenuOpen()) {
+                closeMenu();
+            }
+        } else {
+            fab.setOnClickListener(fabMenuClickListener);
+        }
+    }
+
+    private OnClickListener fabMenuClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (isAnimating) return;
+
+            if (isMenuOpen()) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+    };
 
     static class SavedState extends BaseSavedState {
 
