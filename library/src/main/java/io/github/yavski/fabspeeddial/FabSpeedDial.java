@@ -380,6 +380,10 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
         this.shouldOpenMenu = ss.isShowingMenu;
     }
 
+    public FloatingActionButton getFab() {
+        return fab;
+    }
+
     public void setMenuListener(MenuListener menuListener) {
         this.menuListener = menuListener;
     }
