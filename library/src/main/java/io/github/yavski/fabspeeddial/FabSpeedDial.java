@@ -425,10 +425,14 @@ public class FabSpeedDial extends LinearLayout implements View.OnClickListener {
     }
 
     public void show() {
+        show(null);
+    }
+
+    public void show(FloatingActionButton.OnVisibilityChangedListener listener) {
         if (!ViewCompat.isAttachedToWindow(this))
             return;
         setVisibility(View.VISIBLE);
-        fab.show();
+        fab.show(listener);
     }
 
     public void hide() {
